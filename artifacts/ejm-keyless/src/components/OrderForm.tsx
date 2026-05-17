@@ -10,12 +10,47 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Car, Key, MapPin, Wrench } from "lucide-react";
 
-const vehicleData = {
-  Honda: ["Accord", "Civic", "CR-V", "Pilot"],
-  Toyota: ["Camry", "Corolla", "RAV4", "Highlander"],
-  Ford: ["F-150", "Escape", "Explorer", "Focus"],
-  Chevrolet: ["Silverado", "Malibu", "Equinox", "Tahoe"],
-  Nissan: ["Altima", "Sentra", "Rogue", "Maxima"],
+const vehicleData: Record<string, string[]> = {
+  Acura: ["ILX", "Integra", "MDX", "NSX", "RDX", "TLX"],
+  "Alfa Romeo": ["Giulia", "Giulietta", "Stelvio", "Tonale"],
+  Audi: ["A3", "A4", "A5", "A6", "A7", "A8", "e-tron", "Q3", "Q4 e-tron", "Q5", "Q7", "Q8", "RS3", "RS5", "S3", "S4", "S5", "TT"],
+  BMW: ["2 Series", "3 Series", "4 Series", "5 Series", "7 Series", "8 Series", "i3", "i4", "i7", "iX", "X1", "X2", "X3", "X4", "X5", "X6", "X7", "Z4"],
+  Buick: ["Enclave", "Encore", "Encore GX", "Envision", "LaCrosse", "Verano"],
+  Cadillac: ["CT4", "CT5", "CT6", "Escalade", "Escalade ESV", "Lyriq", "XT4", "XT5", "XT6"],
+  Chevrolet: ["Blazer", "Bolt EUV", "Bolt EV", "Camaro", "Colorado", "Corvette", "Equinox", "Express", "Impala", "Malibu", "Silverado 1500", "Silverado 2500HD", "Silverado 3500HD", "Sonic", "Spark", "Suburban", "Tahoe", "Trailblazer", "Traverse", "Trax"],
+  Chrysler: ["300", "Pacifica", "Voyager"],
+  Dodge: ["Challenger", "Charger", "Dart", "Durango", "Grand Caravan", "Journey", "Viper"],
+  Fiat: ["124 Spider", "500", "500L", "500X"],
+  Ford: ["Bronco", "Bronco Sport", "EcoSport", "Edge", "Escape", "Expedition", "Explorer", "F-150", "F-250 Super Duty", "F-350 Super Duty", "Flex", "Focus", "Fusion", "Maverick", "Mustang", "Mustang Mach-E", "Ranger", "Transit", "Transit Connect"],
+  Genesis: ["G70", "G80", "G90", "GV60", "GV70", "GV80"],
+  GMC: ["Acadia", "Canyon", "Envoy", "Sierra 1500", "Sierra 2500HD", "Sierra 3500HD", "Terrain", "Yukon", "Yukon XL"],
+  Honda: ["Accord", "Civic", "CR-V", "CR-Z", "Fit", "HR-V", "Insight", "Odyssey", "Passport", "Pilot", "Prologue", "Ridgeline"],
+  Hyundai: ["Elantra", "Ioniq", "Ioniq 5", "Ioniq 6", "Kona", "Palisade", "Santa Cruz", "Santa Fe", "Sonata", "Tucson", "Veloster", "Venue"],
+  Infiniti: ["Q50", "Q60", "QX50", "QX55", "QX60", "QX80"],
+  Jaguar: ["E-Pace", "F-Pace", "F-Type", "I-Pace", "XE", "XF", "XJ"],
+  Jeep: ["Cherokee", "Compass", "Gladiator", "Grand Cherokee", "Grand Cherokee L", "Grand Wagoneer", "Renegade", "Wagoneer", "Wrangler"],
+  Kia: ["Carnival", "EV6", "Forte", "K5", "Niro", "Rio", "Seltos", "Soul", "Sorento", "Sportage", "Stinger", "Telluride"],
+  "Land Rover": ["Defender", "Discovery", "Discovery Sport", "Freelander", "Range Rover", "Range Rover Evoque", "Range Rover Sport", "Range Rover Velar"],
+  Lexus: ["ES", "GS", "GX", "IS", "LC", "LS", "LX", "NX", "RC", "RX", "UX"],
+  Lincoln: ["Aviator", "Continental", "Corsair", "MKC", "MKT", "MKX", "MKZ", "Nautilus", "Navigator"],
+  Lucid: ["Air"],
+  Maserati: ["Ghibli", "GranTurismo", "Grecale", "Levante", "MC20", "Quattroporte"],
+  Mazda: ["CX-30", "CX-5", "CX-50", "CX-9", "CX-90", "Mazda3", "Mazda6", "MX-5 Miata", "MX-30"],
+  Mini: ["Clubman", "Convertible", "Cooper", "Cooper S", "Countryman", "Paceman"],
+  Mitsubishi: ["Eclipse Cross", "Galant", "Mirage", "Outlander", "Outlander PHEV", "Outlander Sport"],
+  Nissan: ["Altima", "Armada", "Frontier", "Kicks", "LEAF", "Maxima", "Murano", "Pathfinder", "Rogue", "Rogue Sport", "Sentra", "Titan", "Versa"],
+  Oldsmobile: ["Alero", "Aurora", "Bravada", "Cutlass", "Intrigue", "Silhouette"],
+  Pontiac: ["Aztek", "Bonneville", "Firebird", "G5", "G6", "G8", "Grand Am", "Grand Prix", "Montana", "Solstice", "Torrent", "Vibe"],
+  Porsche: ["718 Boxster", "718 Cayman", "911", "Cayenne", "Macan", "Panamera", "Taycan"],
+  Ram: ["1500", "2500", "3500", "ProMaster", "ProMaster City"],
+  Rivian: ["R1S", "R1T"],
+  Saturn: ["Astra", "Aura", "Ion", "L-Series", "Outlook", "Sky", "Vue"],
+  Scion: ["FR-S", "iA", "iM", "iQ", "tC", "xA", "xB", "xD"],
+  Subaru: ["Ascent", "BRZ", "Crosstrek", "Forester", "Impreza", "Legacy", "Outback", "Solterra", "WRX"],
+  Tesla: ["Cybertruck", "Model 3", "Model S", "Model X", "Model Y"],
+  Toyota: ["4Runner", "86", "Avalon", "C-HR", "Camry", "Corolla", "Crown", "Highlander", "Land Cruiser", "Mirai", "Prius", "RAV4", "Sequoia", "Sienna", "Supra", "Tacoma", "Tundra", "Venza"],
+  Volkswagen: ["Atlas", "Atlas Cross Sport", "Golf", "GTI", "ID.4", "Jetta", "Passat", "Taos", "Tiguan"],
+  Volvo: ["C40", "S60", "S90", "V60", "V90", "XC40", "XC60", "XC90"],
 };
 
 const serviceOptions = [
@@ -58,8 +93,8 @@ export function OrderForm() {
     },
   });
 
-  const selectedMake = form.watch("make") as keyof typeof vehicleData | "";
-  const models = selectedMake && vehicleData[selectedMake] ? vehicleData[selectedMake] : [];
+  const selectedMake = form.watch("make");
+  const models: string[] = selectedMake && vehicleData[selectedMake] ? vehicleData[selectedMake] : [];
 
   const onSubmit = async (data: FormValues) => {
     const res = await fetch("/api/submit-form", {
