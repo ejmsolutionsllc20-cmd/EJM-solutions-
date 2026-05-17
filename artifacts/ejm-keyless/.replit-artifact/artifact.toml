@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "EJM Keyless Entry Solutions"
+version = "1.0.0"
+id = "artifacts/ejm-keyless"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23872
+
+[services.development]
+run = "pnpm --filter @workspace/ejm-keyless run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ejm-keyless", "run", "build" ]
+publicDir = "artifacts/ejm-keyless/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23872"
+BASE_PATH = "/"
