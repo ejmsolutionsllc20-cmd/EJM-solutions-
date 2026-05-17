@@ -1,5 +1,5 @@
 import React from "react";
-import { PhoneCall, ShieldCheck, MapPin, KeyRound, ArrowRight, Wrench } from "lucide-react";
+import { PhoneCall, ShieldCheck, MapPin, KeyRound, ArrowRight, Wrench, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { OrderForm } from "@/components/OrderForm";
 
@@ -150,6 +150,69 @@ export default function Home() {
                   We are fully mobile. On-site key programming and emergency locksmith assistance exactly where you are, getting you back on the road faster.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SERVICE AREA SECTION */}
+        <section className="py-20 bg-secondary text-secondary-foreground border-t border-secondary-foreground/10">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary font-semibold text-sm mb-5 uppercase tracking-wider">
+                <MapPin className="w-4 h-4" />
+                Service Area
+              </div>
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground mb-4">
+                We Come to You Across Connecticut
+              </h3>
+              <p className="text-secondary-foreground/70 text-lg">
+                Fully mobile service — no tow truck needed. If your town isn't listed, give us a call and we'll do our best to reach you.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  county: "Fairfield County",
+                  towns: ["Bridgeport", "Stamford", "Norwalk", "Danbury", "Greenwich", "Stratford", "Trumbull", "Shelton", "Milford", "Westport", "Darien", "Wilton", "Ridgefield", "Newtown", "Monroe", "Easton", "Weston", "New Canaan", "Fairfield", "Bethel"],
+                },
+                {
+                  county: "New Haven County",
+                  towns: ["New Haven", "Waterbury", "Meriden", "West Haven", "Hamden", "North Haven", "Wallingford", "Ansonia", "Derby", "Seymour", "Naugatuck", "Cheshire", "Orange", "Woodbridge", "Bethany", "Guilford", "Branford", "North Branford", "Madison"],
+                },
+                {
+                  county: "Hartford County",
+                  towns: ["Hartford", "New Britain", "Bristol", "Southington", "Enfield", "Glastonbury", "West Hartford", "Newington", "Wethersfield", "Rocky Hill", "East Hartford", "Manchester", "South Windsor", "Windsor", "Bloomfield", "Farmington", "Plainville", "Berlin"],
+                },
+                {
+                  county: "Middlesex & Other",
+                  towns: ["Middletown", "Cromwell", "Portland", "East Hampton", "Haddam", "Killingworth", "Clinton", "Westbrook", "Old Saybrook", "Essex", "East Haddam", "Torrington", "Naugatuck Valley", "Watertown", "Thomaston", "Wolcott", "Prospect"],
+                },
+              ].map((region) => (
+                <div key={region.county} className="bg-secondary-foreground/5 border border-secondary-foreground/10 rounded-2xl p-6">
+                  <h4 className="font-display font-bold text-primary text-base uppercase tracking-wider mb-4 pb-3 border-b border-secondary-foreground/10">
+                    {region.county}
+                  </h4>
+                  <ul className="space-y-2">
+                    {region.towns.map((town) => (
+                      <li key={town} className="flex items-center gap-2 text-sm text-secondary-foreground/80">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                        {town}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <p className="text-secondary-foreground/60 text-sm">
+                Not sure if we cover your area?{" "}
+                <a href="tel:203-805-9220" className="text-primary font-semibold hover:underline" data-testid="link-area-phone">
+                  Call 203-805-9220
+                </a>{" "}
+                and we'll let you know right away.
+              </p>
             </div>
           </div>
         </section>
