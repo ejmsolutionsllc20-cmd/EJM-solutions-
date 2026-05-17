@@ -154,6 +154,13 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FORM SECTION */}
+        <section id="quote-form" className="py-20 bg-muted/50 border-t border-border scroll-mt-20">
+          <div className="container mx-auto px-4">
+            <OrderForm />
+          </div>
+        </section>
+
         {/* SERVICE AREA SECTION */}
         <section className="py-20 bg-secondary text-secondary-foreground border-t border-secondary-foreground/10">
           <div className="container mx-auto px-4">
@@ -217,12 +224,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FORM SECTION */}
-        <section id="quote-form" className="py-20 bg-muted/50 border-t border-border scroll-mt-20">
-          <div className="container mx-auto px-4">
-            <OrderForm />
-          </div>
-        </section>
       </main>
 
       {/* FOOTER */}
