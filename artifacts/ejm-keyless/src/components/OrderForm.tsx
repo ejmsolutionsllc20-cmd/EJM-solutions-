@@ -62,9 +62,31 @@ export function OrderForm() {
   const models = selectedMake && vehicleData[selectedMake] ? vehicleData[selectedMake] : [];
 
   const onSubmit = async (data: FormValues) => {
-    // Simulate network delay
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    console.log("Form submitted", data);
+    const res = await fetch("/api/submit-form", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phone: data.phone,
+        email: data.email,
+        make: data.make,
+        model: data.model,
+        year: data.year,
+        service: data.service,
+        details: data.details ?? "",
+      }),
+    });
+
+    if (!res.ok) {
+      toast({
+        title: "Something went wrong",
+        description: "We couldn't send your request. Please call us at 203-805-9220.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({
       title: "Request Received",
       description: "We've got your info. We'll text or call you shortly with a quote.",

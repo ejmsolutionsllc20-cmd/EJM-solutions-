@@ -22,3 +22,8 @@ timeoutMs = 20000
 [[ports]]
 localPort = 23872
 externalPort = 80
+
+[userenv]
+
+[userenv.shared]
+GMAIL_USER = "ejmsolutionsllc20@gmail.com"
