@@ -2,6 +2,12 @@ import React from "react";
 import { PhoneCall, ShieldCheck, MapPin, KeyRound, ArrowRight, Wrench, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { OrderForm } from "@/components/OrderForm";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function Home() {
   const scrollToForm = () => {
@@ -220,6 +226,81 @@ export default function Home() {
                 </a>{" "}
                 and we'll let you know right away.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ SECTION */}
+        <section className="py-20 bg-background border-t border-border">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+                Common Questions
+              </h3>
+              <p className="text-muted-foreground text-lg">
+                Everything you need to know before you reach out.
+              </p>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-3">
+              {[
+                {
+                  q: "How long does a key programming service take?",
+                  a: "Most jobs take between 20 and 60 minutes on-site depending on the vehicle make, model, and year. Smart key and push-to-start systems can take a bit longer than standard transponder keys. We'll give you a time estimate when you call.",
+                },
+                {
+                  q: "Can you make a key if I've lost all my original keys?",
+                  a: "Yes — this is one of our specialties. Even if every key to your vehicle is gone, we carry the equipment to generate a new key from scratch and program it directly to your car's immobilizer system. No towing required.",
+                },
+                {
+                  q: "Do you work on smart keys and push-to-start vehicles?",
+                  a: "Absolutely. We work on the majority of modern smart key systems, including proximity fobs, flip keys, and push-to-start remotes for most makes and models. Submit your vehicle info through the form and we'll confirm compatibility.",
+                },
+                {
+                  q: "How much does it cost?",
+                  a: "Pricing depends on your vehicle's year, make, model, and the type of key needed. We provide upfront quotes with no hidden fees — submit the form or give us a call at 203-805-9220 and we'll get you a number right away.",
+                },
+                {
+                  q: "Do I need to tow my car to you?",
+                  a: "Never. We are fully mobile — we come to wherever your car is parked, whether that's your driveway, a parking lot, the side of the road, or anywhere else in Connecticut.",
+                },
+                {
+                  q: "Are you available nights and weekends?",
+                  a: "Yes. We offer flexible scheduling including evenings and weekends. For emergencies, call us directly at 203-805-9220 and we'll do our best to get to you as quickly as possible.",
+                },
+                {
+                  q: "What payment methods do you accept?",
+                  a: "We accept cash, Zelle, Venmo, and most major credit and debit cards. Payment is due at the time of service.",
+                },
+                {
+                  q: "Will a new key programmed by you void my warranty?",
+                  a: "In most cases, no. Under the Magnuson-Moss Warranty Act, dealerships generally cannot void your warranty simply because a third party performed key programming. However, if you have concerns, feel free to ask us when you call.",
+                },
+              ].map((item, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`faq-${i}`}
+                  className="bg-card border border-border rounded-xl px-6 data-[state=open]:border-primary/40 transition-colors"
+                  data-testid={`faq-item-${i}`}
+                >
+                  <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline py-5 text-base">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5 text-base">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+
+            <div className="mt-10 text-center">
+              <p className="text-muted-foreground mb-4">Still have a question?</p>
+              <Button asChild size="lg" className="font-bold" data-testid="button-faq-call">
+                <a href="tel:203-805-9220">
+                  <PhoneCall className="w-4 h-4 mr-2" />
+                  Call 203-805-9220
+                </a>
+              </Button>
             </div>
           </div>
         </section>
