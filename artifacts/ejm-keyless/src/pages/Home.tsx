@@ -1,5 +1,5 @@
 import React from "react";
-import { PhoneCall, ShieldCheck, MapPin, KeyRound, ArrowRight, Wrench, CheckCircle2 } from "lucide-react";
+import { PhoneCall, ShieldCheck, MapPin, KeyRound, ArrowRight, Wrench, CheckCircle2, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { OrderForm } from "@/components/OrderForm";
 import {
@@ -226,6 +226,83 @@ export default function Home() {
                 </a>{" "}
                 and we'll let you know right away.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* TESTIMONIALS SECTION */}
+        <section className="py-20 bg-muted/40 border-t border-border">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto mb-14">
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+                What Customers Are Saying
+              </h3>
+              <p className="text-muted-foreground text-lg">
+                Real people, real situations — back on the road with a key in hand.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {[
+                {
+                  name: "Marcus T.",
+                  location: "Stamford, CT",
+                  stars: 5,
+                  text: "Locked out of my Honda at a shopping center on a Sunday night. Called EJM and he showed up within the hour, had me back in the car in 20 minutes. Unreal service. Will never call a dealership again.",
+                },
+                {
+                  name: "Sandra R.",
+                  location: "Bridgeport, CT",
+                  stars: 5,
+                  text: "Lost all my keys to my 2021 RAV4 — thought I was looking at a $500+ dealership bill. EJM came to my house, made two new keys, and programmed them on the spot for way less. Highly recommend.",
+                },
+                {
+                  name: "James O.",
+                  location: "Norwalk, CT",
+                  stars: 5,
+                  text: "Needed a spare key fob for my F-150. Quick response, came to my office, done in 30 minutes. Professional, fair price, no runaround. Saved his number for next time.",
+                },
+                {
+                  name: "Diana K.",
+                  location: "New Haven, CT",
+                  stars: 5,
+                  text: "My daughter was stranded at college with no key. EJM went directly to her and took care of everything while I was at work. Knowing he handled it was a huge relief. Thank you.",
+                },
+                {
+                  name: "Carlos M.",
+                  location: "Danbury, CT",
+                  stars: 5,
+                  text: "Broken key stuck in the ignition of my Silverado. EJM extracted it and cut me a new one right there in the parking lot. Quick, clean, affordable. Exactly what I needed.",
+                },
+                {
+                  name: "Patricia W.",
+                  location: "Hamden, CT",
+                  stars: 5,
+                  text: "I was skeptical about a mobile locksmith but the price was right and the reviews were solid. He arrived on time, explained everything, and my new key works perfectly. Really glad I called.",
+                },
+              ].map((review, i) => (
+                <div
+                  key={i}
+                  className="bg-card border border-border rounded-2xl p-6 flex flex-col gap-4 hover:shadow-md hover:border-primary/30 transition-all"
+                  data-testid={`testimonial-card-${i}`}
+                >
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: review.stars }).map((_, s) => (
+                      <Star key={s} className="w-4 h-4 fill-primary text-primary" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed flex-1 text-sm">
+                    "{review.text}"
+                  </p>
+                  <div className="pt-2 border-t border-border">
+                    <p className="font-bold text-foreground text-sm">{review.name}</p>
+                    <p className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
+                      <MapPin className="w-3 h-3" />
+                      {review.location}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
