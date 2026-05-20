@@ -97,7 +97,8 @@ export function OrderForm() {
   const models: string[] = selectedMake && vehicleData[selectedMake] ? vehicleData[selectedMake] : [];
 
   const onSubmit = async (data: FormValues) => {
-    const res = await fetch("/api/submit-form", {
+    const endpoint = import.meta.env.VITE_SUBMIT_URL ?? "/.netlify/functions/submit-form";
+    const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
